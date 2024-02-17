@@ -133,7 +133,7 @@ function App() {
                       </h2>
                       </div>
                       <h2 className="duty" key={index}>
-                       {exp.duties}
+                       &#x2022; {exp.duties}
                       </h2>
                       </>
                     ))}
