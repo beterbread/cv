@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import '../styles/ExperienceForm.css';
 
 function ExperienceForm( {onExperienceAdd , currentList, remove} ) {
     const [more, setMore] = useState(false);
@@ -37,13 +38,16 @@ function ExperienceForm( {onExperienceAdd , currentList, remove} ) {
     }
 
     return (
-        <>
-        <h1>Experience</h1>
-        {!more && <button onClick={onButtonClick}>More</button>}
-        {!more && currentList.map((elem, index) => (
-                <div key={index}>
-                    <li>{elem.company}</li>
-                    <button onClick={() => onDeleteClick(index)}>Delete</button>
+        <div className='experienceForm'>
+        <div className='header'>
+            <h1>Experience</h1>
+            {!more && <img src="./src/assets/down.png" onClick={onButtonClick}></img>}
+            {more && <img src="./src/assets/go-up.png" onClick={onButtonClick}></img>}
+        </div>
+        {more && currentList.map((elem, index) => (
+                <div className="curr" key={index}>
+                    <p>{elem.company}</p>
+                    <img src="./src/assets/delete.png" onClick={() => onDeleteClick(index)}></img>
                 </div>
             ))}
         {more && <form>
@@ -56,11 +60,13 @@ function ExperienceForm( {onExperienceAdd , currentList, remove} ) {
             <h1>Start Date</h1>
             <input type="month" value={start} onChange={(e) => setStart(e.target.value)}></input>
             <h1>End Date</h1>
-            <input type="motnh" value={end} onChange={(e) => setEnd(e.target.value)}></input>
+            <input type="month" value={end} onChange={(e) => setEnd(e.target.value)}></input>
         </form>}
+        <div className='buttons'>
         {more && <button onClick={onAddClick}>Add</button>}
         {more && <button onClick={onButtonClick}>Cancel</button>}
-        </>
+        </div>
+        </div>
     );
 }
 

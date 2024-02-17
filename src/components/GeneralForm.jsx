@@ -1,7 +1,9 @@
+import '../styles/GeneralForm.css';
+
 // eslint-disable-next-line react/prop-types
 function GeneralForm({ onNameChange, onNumberChange, onEmailChange }) {
   return (
-    <form>
+    <form className="generalForm">
       <h1>Full name</h1>
       <input type="text" onChange={onNameChange}></input>
       <h1>Phone number</h1>

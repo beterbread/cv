@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import '../styles/EducationForm.css';
 
 function EducationForm({ onEducationAdd, currentList, remove }) {
     const [more, setMore] = useState(false);
@@ -33,13 +34,16 @@ function EducationForm({ onEducationAdd, currentList, remove }) {
     }
 
     return (
-        <>
+        <div className="educationForm">
+            <div className="header">
             <h1>Education</h1>
-            {!more && <button onClick={onButtonClick}>More</button>}
+                {!more && <img src="./src/assets/down.png" onClick={onButtonClick}></img>}
+                {more && <img src="./src/assets/go-up.png" onClick={onButtonClick}></img>}
+            </div>
             {more && currentList.map((elem, index) => (
-                <div key={index}>
-                    <li>{elem.schoolName}</li>
-                    <button onClick={() => onDeleteClick(index)}>Delete</button>
+                <div className="curr" key={index}>
+                    <p>{elem.schoolName}</p>
+                    <img src="./src/assets/delete.png" onClick={() => onDeleteClick(index)}></img>
                 </div>
             ))}
             {more && <form>
@@ -52,9 +56,11 @@ function EducationForm({ onEducationAdd, currentList, remove }) {
                 <h1>End date</h1>
                 <input type="month" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </form>}
-            {more && <button onClick={onAddClick}>Add</button>}
+            <div className='buttons'>
+            {more && <button className="add" onClick={onAddClick}>Add</button>}
             {more && <button onClick={onButtonClick}>Cancel</button>}
-        </>
+            </div>
+        </div>
     );
 }
 
