@@ -37,13 +37,13 @@ function EducationForm({ onEducationAdd, currentList, remove }) {
         <div className="educationForm">
             <div className="header">
             <h1>Education</h1>
-                {!more && <img src="./src/assets/down.png" onClick={onButtonClick}></img>}
-                {more && <img src="./src/assets/go-up.png" onClick={onButtonClick}></img>}
+                {!more && <img src="./public/down.png" onClick={onButtonClick}></img>}
+                {more && <img src="./public/go-up.png" onClick={onButtonClick}></img>}
             </div>
             {more && currentList.map((elem, index) => (
                 <div className="curr" key={index}>
                     <p>{elem.schoolName}</p>
-                    <img src="./src/assets/delete.png" onClick={() => onDeleteClick(index)}></img>
+                    <img src="./public/delete.png" onClick={() => onDeleteClick(index)}></img>
                 </div>
             ))}
             {more && <form>
